@@ -6,6 +6,7 @@
   "typings": "build/index.d.ts",
   "scripts": {
     "test-types": "tsc",
+    "prepare": "npm run build && npm run generate-dts",
     "build": "webpack --mode=production",
     "watch": "webpack --mode=development --watch",
     "test": "jest",
@@ -13,7 +14,7 @@
     "generate-dts": "tsc --declaration --emitDeclarationOnly"
   },
   "author": "UnreadableCode",
-  "license": "GPLv2",
+  "license": "GPL-2.0",
   "devDependencies": {
     "@babel/core": "^7.9.6",
     "@babel/plugin-proposal-class-properties": "^7.10.4",
