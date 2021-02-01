@@ -24,6 +24,7 @@ interface CommonGenericProps {
  */
 export type GenericComponentDefinition<Props> = {
     readonly id: string;
+    readonly namespace: string;
     readonly component: React.ComponentType<CommonGenericProps & Props>;
     readonly services?: ReadonlyArray<string>;
 }
@@ -59,6 +60,7 @@ export function generalize<Defs, GenericProps, SpecificProps, ServiceNames exten
 
     const result = Object.create(definition);
     result.id = `${namespace}.${result.id}`;
+    result.namespace = namespace;
     result.component = ({
         services: allServices,
         ...props
