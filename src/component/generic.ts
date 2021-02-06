@@ -24,7 +24,6 @@ interface CommonGenericProps {
  */
 export type GenericComponentDefinition<Props> = {
     readonly id: string;
-    readonly namespace: string;
     readonly component: React.ComponentType<CommonGenericProps & Props>;
     readonly services?: ReadonlyArray<string>;
 }
@@ -65,7 +64,7 @@ export function generalize<Defs, GenericProps, SpecificProps, ServiceNames exten
         services: allServices,
         ...props
     }: GenericProps & CommonGenericProps) => {
-        const specific = mapProps(result, props as unknown as GenericProps) as
+        const specific = mapProps(result, props as unknown as GenericProps, namespace) as
             SelectedServices<ServiceNames> & SpecificProps;
 
         for (let i = servicesRequested.length; i --> 0;) {

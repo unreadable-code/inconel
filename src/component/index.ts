@@ -48,7 +48,7 @@ export type PropsMapper<
     FromProps,
     ToProps,
     Def extends ComponentDefinition<string, ToProps>,
-> = (def: Def, props: FromProps) => ToProps;
+> = (def: Def, props: FromProps, namespace: string) => ToProps;
 
 /**
  * The most general possible description of any props mapper function
