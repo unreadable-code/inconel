@@ -96,7 +96,7 @@ export class Patch {
                 if (isServiceDependencyError(e))
                     reporter.add(e.service, e);
                 else
-                    reporter.add("ServiceGraph", e);
+                    reporter.add("ServiceGraph", e as Error);
             }
         }
 

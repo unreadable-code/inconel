@@ -1,7 +1,7 @@
 "use strict";
 
 const path = require("path");
-const {from} = require("webpack-config-builder");
+const {newConfigBuilder} = require("webpack-config-builder");
 
 const pathBuild = path.resolve(__dirname, "build");
 
@@ -10,7 +10,7 @@ const externals = {
 };
 
 module.exports = [
-    from("./src/index.ts")
+    newConfigBuilder()
         .withReact()
         .withExternals(externals)
         .asLibrary("umd", "inconel")
@@ -22,6 +22,5 @@ module.exports = [
                 root: "React",
             },
         })
-        .to("web", pathBuild, "inconel.js")
-        .build(),
+        .compile("web", "./src/index.ts", pathBuild, "inconel.js"),
 ];

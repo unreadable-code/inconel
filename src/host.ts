@@ -109,7 +109,7 @@ export class Host<Ext extends Extension> implements Interface<Ext> {
                 newComponents.add(extension);
                 newStyles.add(extension);
             } catch (e) {
-                status.add(extensionRefName, e);
+                status.add(extensionRefName, e as Error);
             }
         }
 
