@@ -40,16 +40,16 @@ export class Patch {
             return;
 
         for (let n = 0; n < extension.services.length; ++n) {
-            const Type = extension.services[n];
-            const id = `${extension.namespace}.${Type.shortName}`;
+            const serviceType = extension.services[n] as ServiceClass;
+            const id = `${extension.namespace}.${serviceType.shortName}`;
 
-            if (!Type.shortName)
+            if (!serviceType.shortName)
                 throw new ServiceDefinitionError(id, "Missing \"shortName\" property on service definition");
 
             if (this.services[id] || this.definitions[id])
                 throw new ServiceDefinitionError(id, "Service with duplicate identifier");
 
-            this.definitions[id] = Type;
+            this.definitions[id] = serviceType;
         }
     }
 
