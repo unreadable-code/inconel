@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import {Extension} from "..";
 import {Service, ServiceLookup} from "../service";
 
